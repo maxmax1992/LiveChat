@@ -1,0 +1,33 @@
+{% extends 'Home/base.html' %}
+
+{#<div class="login-page">#}
+{#    <div class="form">#}
+{#        <form class="register-form" method="post" >#}
+{#            <input type="text" placeholder="name"/>#}
+{#            <input type="password" placeholder="password"/>#}
+{#            <input type="text" placeholder="email address"/>#}
+{#            <button>create</button>#}
+{#            <p class="message">Already registered? <a href="#">Sign In</a></p>#}
+{#        </form>#}
+{#        <form class="login-form">#}
+{#            <input type="text" placeholder="username"/>#}
+{#            <input type="password" placeholder="password"/>#}
+{#            <button>login</button>#}
+{#            <p class="message">Not registered? <a href="#">Create an account</a></p>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>  #}
+{% block body %}
+<form action="/authentication/" method="post">
+    {% csrf_token %}
+    <ul>
+<label for="username">Your name: </label>
+    <input id="username" type="text" name="username" value="">
+    </ul>
+    <ul>
+    <label for="password">Your name: </label>
+    <input id="password" type="password" name="password" value="">
+    </ul>
+    <button value="OK" type="sumbit">
+</form>
+{% endblock %}
