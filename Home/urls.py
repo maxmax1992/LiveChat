@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^users/(?P<user_id>[0-9]+)/$', views.userDetail, name='user_details'),
     url(r'^login/$', views.loginView, name='login'),
     url(r'^authentication/$', views.loginApprove, name='approve'),
+    url(r'logout/$', views.logOut, name= 'logout'),
 ]

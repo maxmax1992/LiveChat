@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import User, Message, Channel
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -18,7 +19,11 @@ def userDetail(request, user_id):
 
 def channelDetail(request, channel_id):
     channel = Channel.objects.get(id=channel_id)
-    return render(request, 'Home/channelDetail.html', {'channel': channel})
+
+    users = User.objects.all()
+    # messages = Message.
+    return render(request, 'Home/channelDetail.html',
+                  {'channel': channel, 'users': users}) #'messages': messages})
 
 
 
@@ -37,3 +42,28 @@ def loginApprove(request):
     else:
         return render(request, 'Home/loggin_fail.html')
         # Return an 'invalid login' error message.
+
+@login_required(redirect_field_name='index')
+def logOut(request):
+    logout(request)
+    return render(request, 'Home/index.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
