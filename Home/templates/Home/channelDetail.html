@@ -4,5 +4,16 @@
     <h1>
     {{ channel.name}}
 
+    {% for participant in channel.channelparticipant_set.all %}
+        <h1>{{ participant.user.username }}</h1>
+        <ol>
+            {% for message in participant.message_set.all %}
+                <li>{{ message.text }}</li>
+                {% endfor %}
+        </ol>
+
+
+    {% endfor %}
+
     </h1>
 {% endblock %}

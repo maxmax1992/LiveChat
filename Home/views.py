@@ -23,7 +23,7 @@ def channelDetail(request, channel_id):
     users = User.objects.all()
     # messages = Message.
     return render(request, 'Home/channelDetail.html',
-                  {'channel': channel, 'users': users}) #'messages': messages})
+                  {'channel': channel})#'messages': messages})
 
 
 

@@ -60,7 +60,7 @@ class Message(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     chat = models.ForeignKey(Channel, on_delete=models.CASCADE, default=1)
     text = models.CharField(max_length=500)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(ChannelParticipant, on_delete=models.CASCADE)
 
     def __str__(self):
         return "Message : {} \n by user {}" .format(self.text, self.user)
