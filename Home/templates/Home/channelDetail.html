@@ -1,19 +1,36 @@
 {% extends 'Home/base.html' %}
+      {% load staticfiles %}
 
 {% block body %}
     <h1>
-    {{ channel.name}}
-
-    {% for participant in channel.channelparticipant_set.all %}
-        <h1>{{ participant.user.username }}</h1>
-        <ol>
-            {% for message in participant.message_set.all %}
-                <li>{{ message.text }}</li>
-                {% endfor %}
-        </ol>
-
-
-    {% endfor %}
-
+        {{ channel.name }}
     </h1>
-{% endblock %}
+
+  <form id="chatform">
+    <table id="chat">
+      <tbody>
+        {% for message in channel.message_set.all %}
+          <tr>
+            <td>{{ message.text }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+      <tr>
+        <td>Say something:</td>
+        <td colspan=2>
+          <input id="text" type="text" placeholder="text">
+          <button type="submit" id="go">Say it</button>
+        </td>
+      </tfoot>
+    </table>
+  </form>
+
+
+{% endblock body %}
+
+{% block afterbody %}
+  <script type="text/javascript" src='{% static "Home/jquery-1.12.1.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "Home/reconnecting-websocket.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "Home/chat.js" %}'></script>
+{% endblock afterbody %}
