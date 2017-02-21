@@ -1,0 +1,13 @@
+.FixedHeightContainer {
+  float: left;
+  height: 250px;
+  width: 600px;
+  padding: 3px;
+  background: #f00;
+}
+
+.Content {
+  height: 224px;
+  overflow: auto;
+  background: #fff;
+}

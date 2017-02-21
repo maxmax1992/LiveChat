@@ -1,36 +1,48 @@
 {% extends 'Home/base.html' %}
-      {% load staticfiles %}
+{% load staticfiles %}
+
+{% block pageStyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Home/chatStyle.css' %}"/>
+{% endblock %}
 
 {% block body %}
     <h1>
         {{ channel.name }}
     </h1>
 
-  <form id="chatform">
-    <table id="chat">
-      <tbody>
-        {% for message in channel.message_set.all %}
-          <tr>
-            <td>{{ message.text }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-      <tfoot>
-      <tr>
-        <td>Say something:</td>
-        <td colspan=2>
-          <input id="text" type="text" placeholder="text">
-          <button type="submit" id="go">Say it</button>
-        </td>
-      </tfoot>
-    </table>
-  </form>
+    <div class="FixedHeightContainer">
+        <h2>Title</h2>
+        <div class="Content">
+
+        </div>
+    </div>
+
+
+    <form id="chatform">
+        <table id="chat">
+            <tbody>
+            {% for message in channel.message_set.all %}
+                <tr>
+                    <td>{{ message.text }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td>Say something:</td>
+                <td colspan=2>
+                    <input id="text" type="text" placeholder="text">
+                    <button type="submit" id="go">Say it</button>
+                </td>
+            </tfoot>
+        </table>
+    </form>
 
 
 {% endblock body %}
 
 {% block afterbody %}
-  <script type="text/javascript" src='{% static "Home/jquery-1.12.1.min.js" %}'></script>
-  <script type="text/javascript" src='{% static "Home/reconnecting-websocket.min.js" %}'></script>
-  <script type="text/javascript" src='{% static "Home/chat.js" %}'></script>
+    <script type="text/javascript" src='{% static "Home/jquery-1.12.1.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "Home/reconnecting-websocket.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "Home/chat.js" %}'></script>
 {% endblock afterbody %}
