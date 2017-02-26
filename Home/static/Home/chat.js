@@ -9,10 +9,15 @@ $('document').ready(function () {
     console.log("ws://" + window.location.host + window.location.pathname);
     socket.onmessage = function (e) {
         alert(e.data);
+
+
+        var $div = $("<div>", {id: "foo", "class": "a"});
+
+
         $("textarea").append("\n" + e.data);
     }
     socket.onopen = function () {
-        socket.send("hello world");
+        // socket.send("hello world");
     }
     // Call onopen directly if socket is already open
     if (socket.readyState == WebSocket.OPEN) socket.onopen();
@@ -21,7 +26,22 @@ $('document').ready(function () {
 
     //sends to consumers the text with attribute 'Text' the shit. JSON.stringify is useful here i guess
     $("#chatform").submit(function (event) {
-        socket.send($("#chatform input").val());
+        // console.log($("#chatform input").val());
+        // var titles = [];
+        // $('input[name^=titles]').each(function(){
+        //     titles.push($(this).val());
+        // });
+        // data = {
+        //     "str": $("#chatform #text").val().toString();
+        //
+        // };
+        var data = {
+            'user': $("#user").val(),
+            'msg': $("#msg").val()
+        }
+        // socket.send(data.str);
+        socket.send(JSON.stringify(data));
+
         event.preventDefault();
     });
 

@@ -25,44 +25,32 @@
     </h1>
     <div id="loginTabs">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#home" data-toggle="tab">Login</a></li>
-            <li><a href="#profile" data-toggle="tab">Register</a></li>
+                <li class="active"><a href="#home" data-toggle="tab">Login</a></li>
+                <li><a href="#profile" data-toggle="tab">Register</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
 
             <div class="tab-pane fade active in" id="home">
 
                 <div class="well bs-component">
-
-
-{#                    <form action="/authentication/" method="post">#}
-{#    {% csrf_token %}#}
-{#    <ul>#}
-{#    <label for="username">Your name: </label>#}
-{#    <input id="username" type="text" name="username" value="">#}
-{#    </ul>#}
-{#    <ul>#}
-{#    <label for="password">Your name: </label>#}
-{#    <input id="password" type="password" name="password" value="">#}
-{#    </ul>#}
-{#    <button value="OK" type="sumbit">#}
-{#</form>#}
-
-
-                    <form class="form-horizontal" method="post" action="/authentication/">
+{#                    {% if error_message %}#}
+{#                        <p><strong style="color: red;">{{ error_message }}</strong></p>#}
+{#                    {% endif %}#}
+                    <form class="form-horizontal" method="post" action="">
                         {% csrf_token %}
-                        <fieldset>
+                        <fielsdset>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="username" id="inputEmail" placeholder="Email">
+                                    <input type="email" class="form-control" name="username" id="inputEmail"
+                                           placeholder="Email">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                                 <div class="col-lg-10">
-                                    <input type="password" class="form-control" id="inputPassword" name="password"
-                                           placeholder="Password">
+                                    <input type="password" class="form-control" id="password"
+                                           placeholder="Password" name="password">
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox"> Remember me
@@ -73,48 +61,71 @@
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <button type="reset" class="btn btn-default">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" name="loginButton" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
-                        </fieldset>
+                        </fielsdset>
                     </form>
                 </div>
-
-
             </div>
-
             <div class="tab-pane fade" id="profile">
                 <div class="well bs-component">
-                    <form class="form-horizontal">
+                    {% if error_message %}
+                        <p><strong>{{ error_message2}}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" action="" method="post" id="registerForm">
+                        {% csrf_token %}
                         <fieldset>
+                            {% if username_error %}
+                                <p><strong style="color: red;">{{ username_error }}</strong></p>
+                            {% endif %}
+                            <div class="form-group">
+                                <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputUsername" name="username"
+                                           placeholder="Username">
+                                </div>
+                            </div>
+                            {% if email_error %}
+                            <p><strong style="color: red;">{{ email_error }}</strong></p>
+                            {% endif %}
                             <div class="form-group">
                                 <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                                    <input type="email" class="form-control" id="inputEmail" name="email"
+                                           placeholder="Email">
                                 </div>
                             </div>
+                            {% if password_error %}
+                            <p><strong style="color: red;">{{ password_error }}</strong></p>
+                            {% endif %}
                             <div class="form-group">
                                 <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                                 <div class="col-lg-10">
-                                    <input type="password" class="form-control" id="inputPassword"
-                                           placeholder="Password">
+                                    <input type="password" class="form-control" id="inputPassword0"
+                                           placeholder="Password" name="password">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword" class="col-lg-2 control-label"></label>
                                 <div class="col-lg-10">
-                                    <input type="password" class="form-control" id="inputPassword"
-                                           placeholder="Re-type password">
+                                    <input type="password" class="form-control" id="inputPassword1"
+                                           placeholder="Re-type password" name="password2">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label"></label>
+                                <div class="col-lg-10">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox"> Game developer
+                                            <input type="checkbox" name="developer"> Game developer
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <button type="submit" class="btn btn-primary">Register</button>
+                                    <button type="submit" name="registerButton" class="btn btn-primary">Register</button>
                                 </div>
                             </div>
                         </fieldset>
@@ -127,4 +138,11 @@
 
 
 
+{% endblock  %}
+{% block afterbody %}
+    {% if tab2 %}
+        <script>
+        $('.nav-tabs a[href="#profile"]').tab('show')
+        </script>
+    {% endif %}
 {% endblock %}

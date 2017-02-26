@@ -13,35 +13,57 @@
     <div class="FixedHeightContainer">
         <h2>Title</h2>
         <div class="Content">
-
-        </div>
-    </div>
-
-
-    <form id="chatform">
-        <table id="chat">
-            <tbody>
-            {% for message in channel.message_set.all %}
+            {% for message in messages %}
                 <tr>
-                    <td>{{ message.text }}</td>
+                    <td>{{ message.text }} <span class="datetime">{{ message.getTime }}</span></td>
+                    <br>
                 </tr>
             {% endfor %}
-            </tbody>
-            <tfoot>
-            <tr>
-                <td>Say something:</td>
-                <td colspan=2>
-                    <input id="text" type="text" placeholder="text">
-                    <button type="submit" id="go">Say it</button>
-                </td>
-            </tfoot>
-        </table>
-    </form>
 
+        </div>
+        <form id="chatform" method="post">
+{#            {% csrf_token %}#}
+            <input id="msg" type="text" name="msg" placeholder="text">
+            <input type="hidden" id="user" value={{ user.username }}>
+            <button type="submit" id="go">Say it</button>
+        </form>
+    </div>
 
 {% endblock body %}
 
 {% block afterbody %}
+    <style>
+        body {
+            display: none;
+        }
+    </style>
+    <script>
+        function formatDate(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return date.getDate() + 1 + "/" + date.getMonth() + "/" + date.getFullYear() + "  " + strTime;
+        }
+
+        $(document).ready(function () {
+            $('.datetime').text(function () {
+                var date = new Date(parseInt($(this).text()));
+
+                {#                console.log(formatDate(date));#}
+                $(this).text(formatDate(date));
+                $('body').fadeIn();
+            });
+        });
+
+
+        {#        console.log(new Date($('#datetime span').text()));#}
+        {#        console.log($('#datetime span').text());#}
+
+    </script>
     <script type="text/javascript" src='{% static "Home/jquery-1.12.1.min.js" %}'></script>
     <script type="text/javascript" src='{% static "Home/reconnecting-websocket.min.js" %}'></script>
     <script type="text/javascript" src='{% static "Home/chat.js" %}'></script>
