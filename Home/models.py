@@ -47,7 +47,7 @@ class ChannelParticipant(models.Model):
 class Channel(models.Model):
     name = models.CharField(max_length=100, default='')
     creator = models.ForeignKey(User)
-
+    isPrivate = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

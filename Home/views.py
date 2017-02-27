@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User, Message, Channel
+from .models import User, Message, Channel, ChannelParticipant
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.timezone import get_current_timezone
@@ -7,12 +7,13 @@ from django.utils.timezone import get_current_timezone
 
 
 # currently returns dummy index with all users listed.
+@login_required(login_url='/login/')
 def channels(request):
     channels = Channel.objects.all()
     return render(request, 'Home/index.html', {'channels': channels})
 
 
-
+@login_required(login_url='/login/')
 def userDetail(request, user_id):
     user = User.objects.get(pk=user_id)
     return render(request, 'Home/userDetail.html', {'user': user})
@@ -20,22 +21,29 @@ def userDetail(request, user_id):
 
 @login_required(login_url='/login/')
 def channelDetail(request, channel_id):
-    tz = get_current_timezone()
+
     channel = Channel.objects.get(id=channel_id)
 
-    # users = User.objects.all()
+    try:
+        participant = ChannelParticipant.objects.get(user=request.user)
+    except ChannelParticipant.DoesNotExist:
+        participant = None
+
+    if participant is None:
+        participant = ChannelParticipant.objects.create(user=request.user, channel=int(channel))
+        participant.save()
+
+    # check if user is a participant or not,
+    # if not add channelParticipant to database
     users = channel.users
     messages = reversed(channel.messages.order_by('-created_at')[:50])
     user = request.user
     return render(request, 'Home/channelDetail.html',
                   {'channel': channel,'messages': messages, 'users': users, 'user': user})
 
-
-
 def loginView(request):
     if request.method == 'POST':
         if "loginButton" in request.POST:
-            print("loginButtoooooon")
             username = request.POST['username']
             password = request.POST['password']
             user = authenticate(username=username, password=password)
@@ -85,10 +93,19 @@ def loginView(request):
 
 @login_required(redirect_field_name='index')
 def logOut(request):
-
     logout(request)
     return render(request, 'Home/index.html')
 
+
+
+@login_required(redirect_field_name='login')
+def createChannel(request):
+    if request.method == 'POST':
+
+
+        pass
+    else:
+        return render (request, 'Home/createChannel.html')
 
 
 

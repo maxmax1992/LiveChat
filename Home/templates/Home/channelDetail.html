@@ -6,37 +6,95 @@
 {% endblock %}
 
 {% block body %}
-    <h1>
-        {{ channel.name }}
-    </h1>
 
-    <div class="FixedHeightContainer">
-        <h2>Title</h2>
-        <div class="Content">
-            {% for message in messages %}
-                <tr>
-                    <td>{{ message.text }} <span class="datetime">{{ message.getTime }}</span></td>
-                    <br>
-                </tr>
-            {% endfor %}
+    <div id="pageContent" style="text-align:left !important">
+        <div id="channelsPanel" class="panelcontent">
 
+            <h4 style="text-align: center">Channels</h4>
+            <div class="list-group table-of-contents">
+                <form class="list-group-item"  role="search">
+                    <div class="form-group" id="searchChannels">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
+                <div class="listContent" style="overflow-scrolling: true">
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+                    <a href="#" class="list-group-item btn btn-default">Default</a>
+
+                </div>
+            </div>
         </div>
-        <form id="chatform" method="post">
-{#            {% csrf_token %}#}
-            <input id="msg" type="text" name="msg" placeholder="text">
-            <input type="hidden" id="user" value={{ user.username }}>
-            <button type="submit" id="go">Say it</button>
-        </form>
+
+        <div class="panel panel-primary panelcontent" id="chatPanel">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ channel.name }}</h3>
+            </div>
+            <div class="Content">
+                {% for message in messages %}
+                    <div>
+                        <tr>
+                            <td>{{ message.text }} <span class="datetime">{{ message.getTime }}</span></td>
+                            <br>
+                        </tr>
+                    </div>
+                {% endfor %}
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br><br><br><br><br><br><br><br><br>
+
+
+            </div>
+            <div class="form-group">
+                <form id="chatform" method="post">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                    <input type="hidden" id="user" value={{ user.username }}>
+            <button class="btn btn-default" id="go" type="button">Button</button>
+            </span>
+                    </div>
+                </form>
+            </div>
+            {#    <form id="chatform" method="post">#}
+            {#            {% csrf_token %}#}
+            {#            <input id="msg" type="text" name="msg" placeholder="text">#}
+            {#            <input type="hidden" id="user" value={{ user.username }}>#}
+            {#            <button type="submit" id="go">Say it</button>#}
+            {#        </form>#}
+        </div>
     </div>
 
 {% endblock body %}
 
 {% block afterbody %}
-    <style>
-        body {
-            display: none;
-        }
-    </style>
     <script>
         function formatDate(date) {
             var hours = date.getHours();
