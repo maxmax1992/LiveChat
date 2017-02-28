@@ -25,7 +25,7 @@ SECRET_KEY = '-1do7h51c+satsrb@)6(tkpci)d!_9v3t-_9gx9fu(wzjz%wfk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["djlivechat.herokuapp.com"]
 
 
 # Application definition
