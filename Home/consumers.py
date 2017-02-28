@@ -1,7 +1,8 @@
 # In consumers.py
 from channels import Group
 from channels.auth import channel_session_user_from_http
-from .models import ChannelParticipant, Channel
+import json
+from .models import ChannelParticipant, Channel, User, Message
 from channels.sessions import channel_session
 
 # Connected to websocket.connect
@@ -23,8 +24,22 @@ def ws_connect(message):
 # Connected to websocket.receive
 @channel_session_user_from_http
 def ws_message(message):
-    print(message['text'])
-    Group("chat-%s" % message.channel_session['room']).send({
+    room = message.channel_session['room']
+    obj = json.loads(message['text'])
+
+    channel = Channel.objects.get(pk=room)
+
+    username = obj['username']
+    msg = obj['message']
+    user = User.objects.get(username=username)
+    participant = ChannelParticipant.objects.get(user=user)
+
+    # print(message.channel_session['room'])
+    messageobj = Message.objects.create(user=participant, text=msg, chat=channel)
+    messageobj.save()
+    # print(message.user.get_username())
+
+    Group("chat-%s" % room).send({
         "text": message['text'],
     })
 

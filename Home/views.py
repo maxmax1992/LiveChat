@@ -30,16 +30,17 @@ def channelDetail(request, channel_id):
         participant = None
 
     if participant is None:
-        participant = ChannelParticipant.objects.create(user=request.user, channel=int(channel))
+        participant = ChannelParticipant.objects.create(user=request.user, channel=channel)
         participant.save()
 
     # check if user is a participant or not,
     # if not add channelParticipant to database
     users = channel.users
     messages = reversed(channel.messages.order_by('-created_at')[:50])
+
     user = request.user
     return render(request, 'Home/channelDetail.html',
-                  {'channel': channel, 'messages': messages, 'users': users, 'user': user})
+                  {'channel': channel, 'messages': messages, 'users': users, 'user': participant})
 
 
 def loginView(request):
@@ -127,6 +128,5 @@ def myChannels(request):
         print(channel)
     # print(len(created_channels) + len(created_channels)
     return render(request, 'Home/ownChannels.html', {
-        'own_channels': own_channels,
         'created_channels': created_channels
     })

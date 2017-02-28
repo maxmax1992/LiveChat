@@ -1,8 +1,8 @@
 
 
 .Content {
+  height: 600px;
   overflow: auto;
-  background: #fff;
 }
 
 body {
@@ -38,4 +38,37 @@ body {
 #searchChannels {
   width : 100%;
   display: inline-flex;
+}
+
+/*selects chat window*/
+#chatWindow {
+  width: 100%;
+  display: inline-block;
+  background-color: lightgray;
+}
+/*selects all messages*/
+#chatWindow div {
+  background-color: lightgrey;
+  width: 100%;
+}
+
+/*selects others messages*/
+#chatWindow div .othersMessage {
+  background-color: white;
+  float: left;
+  width: 100px;
+
+}
+
+
+/*selects own messages*/
+#chatWindow div .selfMessage {
+ background-color: white;
+ float: right;
+ width: 100px;
+}
+
+#chatWindow div .comment {
+  width: 300px;
+  background-color: aqua;
 }
