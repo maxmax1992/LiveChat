@@ -21,30 +21,6 @@
                 </form>
                 <div class="listContent" style="overflow-scrolling: true">
                     <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-
                 </div>
             </div>
         </div>
@@ -55,24 +31,21 @@
             </div>
             <div class="Content" id="chatWindow">
                 {% for message in messages %}
-                    <div>
-                        <tr>
-                            <br>
-                            {% if message.user.pk == user.pk %}
-                                <div class="selfMessage comment">
-                                    <p>
-                                        {{ message.text }} <span class="datetime">{{ message.getTime }}</span>
-                                    </p>
-                                </div>
-                            {% else %}
-                                <div class="othersMessage comment">
-                                    <p>
-                                        {{ message.text }} <span class="datetime">{{ message.getTime }}</span>
-                                    </p>
-                                </div>
-                            {% endif %}
-                            <br><br><br>
-                        </tr>
+                    <div style="width: 100%;">
+                        {% if message.user.pk == user.pk %}
+                            <div class="panel panel-default" style="background-color: lightblue; text-align: right">
+                                </p>
+                                {{ message.text }} <span class="datetime">{{ message.getTime }}</span>
+                                </p>
+                            </div>
+                        {% else %}
+                            <div class="panel panel-default">
+                                <p>
+                                    {{ message.text }} <span class="datetime">{{ message.getTime }}</span>
+                                </p>
+                            </div>
+                        {% endif %}
+
                     </div>
                 {% endfor %}
 
@@ -101,6 +74,11 @@
 {% endblock body %}
 
 {% block afterbody %}
+    <style>
+        body {
+            display: none;
+        }
+    </style>
     <script>
         function formatDate(date) {
             var hours = date.getHours();
@@ -116,7 +94,6 @@
         $(document).ready(function () {
             $('.datetime').text(function () {
                 var date = new Date(parseInt($(this).text()));
-
                 {#                console.log(formatDate(date));#}
                 $(this).text(formatDate(date));
                 $('body').fadeIn();
