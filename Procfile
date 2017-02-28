@@ -1,2 +1,2 @@
-web: daphne chat.asgi:channel_layer
+web: gunicorn LiveChat.Home.asgi --log-file -
 worker: python manage.py runserver

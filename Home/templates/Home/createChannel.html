@@ -1,10 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'Home/base.html' %}
 
-</body>
-</html>
+{% block static %}
+
+{% endblock %}
+
+
+{% block body %}
+    <div class="form" xmlns:color="http://www.w3.org/1999/xhtml">
+        <div class="col-sm-7">
+            <div class="well bs-component">
+                <form class="form-horizontal" method="post" action="">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>Create a chat</legend>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-2 control-label">Chat name</label>
+                            <div class="col-lg-10">
+                                <p><strong style="color: red;">{{ form.name.errors }}</strong></p>
+                                <input type="text" class="form-control" id="inputEmail" name="name" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Chat type</label>
+                            <div class="col-lg-10">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
+                                               checked="">
+                                        Public
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        Private
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block afterbody %}
+
+{% endblock %}

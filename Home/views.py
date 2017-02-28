@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
+from itertools import chain
+from Home.forms import ChannelForm
 from .models import User, Message, Channel, ChannelParticipant
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.timezone import get_current_timezone
-
 
 
 # currently returns dummy index with all users listed.
@@ -21,7 +22,6 @@ def userDetail(request, user_id):
 
 @login_required(login_url='/login/')
 def channelDetail(request, channel_id):
-
     channel = Channel.objects.get(id=channel_id)
 
     try:
@@ -39,7 +39,8 @@ def channelDetail(request, channel_id):
     messages = reversed(channel.messages.order_by('-created_at')[:50])
     user = request.user
     return render(request, 'Home/channelDetail.html',
-                  {'channel': channel,'messages': messages, 'users': users, 'user': user})
+                  {'channel': channel, 'messages': messages, 'users': users, 'user': user})
+
 
 def loginView(request):
     if request.method == 'POST':
@@ -62,18 +63,18 @@ def loginView(request):
             email = request.POST['email']
             # developer = request.POST.get['developer', False]
             try:
-                User.objects.get(username = username)
+                User.objects.get(username=username)
                 data.update({"username_error": "This username already exists"})
             except:
                 pass
             try:
-                User.objects.get(email = email)
+                User.objects.get(email=email)
                 data.update({"email_error": "This email already exists"})
             except:
                 pass
             if password != password2:
                 data.update({"password_error": "The passwords did not match"})
-            #     password = request.POST['password']
+            # password = request.POST['password']
 
             if len(data) > 0:
                 data["tab2"] = "tab2"
@@ -91,37 +92,41 @@ def loginView(request):
     else:
         return render(request, 'Home/login.html')
 
+
 @login_required(redirect_field_name='index')
 def logOut(request):
     logout(request)
     return render(request, 'Home/index.html')
 
 
-
 @login_required(redirect_field_name='login')
 def createChannel(request):
     if request.method == 'POST':
-
-
-        pass
+        form = ChannelForm(request.POST or None)
+        if form.is_valid():
+            channel = form.save(commit=False)
+            channel.creator = request.user
+            radioVal = request.POST['optionsRadios']
+            if radioVal == 'option2':
+                channel.isPrivate = True
+            channel.save()
+            return redirect('/')
+        context = {
+            "form": form
+        }
+        return render(request, 'games/createChannel.html', context)
     else:
-        return render (request, 'Home/createChannel.html')
+        return render(request, 'Home/createChannel.html')
 
+@login_required(login_url='/login/')
+def myChannels(request):
+    created_channels = Channel.objects.filter(creator=request.user)
+    # own_channels = Channel.objects.filter(user = request.user)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    for channel in channels:
+        print(channel)
+    # print(len(created_channels) + len(created_channels)
+    return render(request, 'Home/ownChannels.html', {
+        'own_channels': own_channels,
+        'created_channels': created_channels
+    })

@@ -4,6 +4,7 @@ autobahn==0.17.1
 channels==1.0.3
 constantly==15.1.0
 daphne==1.0.2
+dj-database-url==0.4.2
 Django==1.10.5
 django-debug-toolbar==1.6
 django-extensions==1.7.5
