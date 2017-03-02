@@ -1,8 +1,12 @@
 
+#chatPanel {
+  height: 400px;
+}
 
 .Content {
-  height: 600px;
+  background: lightgrey;
   overflow: auto;
+
 }
 
 body {
