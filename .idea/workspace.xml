@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="467e749f-8f66-4f9c-a989-175eef785013" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump.rdb" afterPath="$PROJECT_DIR$/dump.rdb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Home/static/Home/chat.js" afterPath="$PROJECT_DIR$/Home/static/Home/chat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Home/templates/Home/channelDetail.html" afterPath="$PROJECT_DIR$/Home/templates/Home/channelDetail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Home/templates/Home/createChannel.html" afterPath="$PROJECT_DIR$/Home/templates/Home/createChannel.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Home/templates/Home/index.html" afterPath="$PROJECT_DIR$/Home/templates/Home/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LiveChat/settings.py" afterPath="$PROJECT_DIR$/LiveChat/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,17 +33,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LiveChat/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="31" column="48" lean-forward="false" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+            <state relative-caret-position="399">
+              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createChannel.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="createChannel.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Home/templates/Home/createChannel.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -189,8 +183,8 @@
       <find>&lt;p&gt;</find>
       <find>PROJECT ROOT</find>
       <find>templatemsg</find>
-      <find>col</find>
       <find>sumbit</find>
+      <find>col</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -228,13 +222,13 @@
         <option value="$PROJECT_DIR$/Home/static/Home/chatStyle.css" />
         <option value="$PROJECT_DIR$/LiveChat/asgi.py" />
         <option value="$PROJECT_DIR$/LiveChat/wsgi.py" />
-        <option value="$PROJECT_DIR$/LiveChat/settings.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/Home/templates/Home/channelDetail.html" />
         <option value="$PROJECT_DIR$/Home/static/Home/chat.js" />
         <option value="$PROJECT_DIR$/Home/static/Home/createStyle.css" />
         <option value="$PROJECT_DIR$/Home/templates/Home/index.html" />
         <option value="$PROJECT_DIR$/Home/templates/Home/createChannel.html" />
+        <option value="$PROJECT_DIR$/LiveChat/settings.py" />
       </list>
     </option>
   </component>
@@ -689,9 +683,9 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283186" sideWeight="0.49713877" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23539823" sideWeight="0.72317594" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23539823" sideWeight="0.72317594" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25044248" sideWeight="0.47353363" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25044248" sideWeight="0.47353363" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1035,14 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LiveChat/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="31" column="48" lean-forward="false" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Home/static/Home/chat.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1109,6 +1095,14 @@
             <element signature="e#204#234#0#HTML" expanded="true" />
             <element signature="e#365#404#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LiveChat/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
