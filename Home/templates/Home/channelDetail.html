@@ -32,20 +32,22 @@
             <div class="panel-heading">
                 <h3 class="panel-title">{{ channel.name }}</h3>
             </div>
+            <div class="panel panel-default templateMSG"
+                 style="background-color: lightblue; text-align: right; display: none;"></div>
+            <div class="panel panel-default templateMSG2" style="display: none; text-align: left">
+            </div>
             <div class="Content" id="chatWindow">
                 {% for message in messages %}
                     <div>
                         {% if message.user.pk == theuser.pk %}
                             <div class="panel panel-default" style="background-color: lightblue; text-align: right">
-                                </p>
-                                {{ message.text }} <span class="datetime">{{ message.getTime }}</span>
-                                </p>
+                                <span style="color: black; font-size: 20px">{{ theuser.user.username }}</span> <span class="datetime">{{ message.getTime }}</span> <br><br>
+                                {{ message.text }}
                             </div>
                         {% else %}
-                            <div class="panel panel-default">
-                                <p>
-                                    {{ message.text }} <span class="datetime">{{ message.getTime }}</span>
-                                </p>
+                            <div class="panel panel-default" style="text-align: left">
+                                 <span style="color: black; font-size: 20px">{{ message.user.user.username }}</span> <span class="datetime">{{ message.getTime }}</span> <br><br>
+                            {{ message.text }}
                             </div>
                         {% endif %}
                     </div>
@@ -66,6 +68,7 @@
             </form>
         </div>
     </div>
+
 
 {% endblock body %}
 
@@ -95,7 +98,7 @@
             });
             {#                        $('#pageContent').height($(window).height() * 0.8);#}
 
-            $('body').fadeIn();
+            $('body').fadeIn(200);
         });
 
 

@@ -1,9 +1,38 @@
 {% extends 'Home/base.html' %}
 
+{% block static %}
+
+{% endblock %}
 {% block body %}
-    {% for channel in channels %}
-                <li><a href ="{% url 'channel_details' channel.id %}">{{ channel.name }}</a></li>
-        <br>
-    {% endfor %}
+    {% if channels|length > 0 %}
+        <div style="text-align: center">
+            <div style="display: inline-block">
+                <div style="width: 100%;">
+                    <H3> Available channels </H3>
+                    {% for channel in channels %}
+                        <a style=" border-radius: 0; width: 500px" href="{% url 'channel_details' channel.id %}"
+                           class="btn btn-default btn-lg btn-block">{{ channel.name }}</a>
+                        <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+
+        <div style="text-align: center">
+            <div>
+                <div style="width: 100%;">
+                    <br><br><br><br><br><br><br>
+                    <div class="jumbotron" style="width: 70%; display: inline-block">
+                        <h1>Welcome</h1>
+                        <p>Currently there is no chat rooms</p>
+                        <p><a href="{% url "createChannel" %}" class="btn btn-primary btn-lg">Add room</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% endif %}
 
 {% endblock %}
