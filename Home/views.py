@@ -10,6 +10,8 @@ from django.utils.timezone import get_current_timezone
 # currently returns dummy index with all users listed.
 @login_required(login_url='/login/')
 def channels(request):
+    print(request.user.is_authenticated)
+
     channels = Channel.objects.all()
     return render(request, 'Home/index.html', {'channels': channels})
 
@@ -23,6 +25,7 @@ def userDetail(request, user_id):
 @login_required(login_url='/login/')
 def channelDetail(request, channel_id):
     channel = Channel.objects.get(id=channel_id)
+    print(request.user.is_authenticated)
 
     try:
         participant = ChannelParticipant.objects.get(user=request.user)
@@ -38,9 +41,8 @@ def channelDetail(request, channel_id):
     users = channel.users
     messages = reversed(channel.messages.order_by('-created_at')[:50])
 
-    user = request.user
     return render(request, 'Home/channelDetail.html',
-                  {'channel': channel, 'messages': messages, 'users': users, 'user': participant})
+                  {'channel': channel, 'messages': messages, 'users': users, 'theuser': participant})
 
 
 def loginView(request):

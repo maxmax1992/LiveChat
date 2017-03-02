@@ -1,3 +1,10 @@
 .container-fluid {
     border-radius: 0;
 }
+
+#brandName {
+    font-size: 25px;
+    font-family: 'Satisfy', cursive;
+}
+
+

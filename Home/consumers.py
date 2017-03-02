@@ -15,7 +15,6 @@ def ws_connect(message):
     # r = message.content['path'].split("/")[2];
     room = message.content['path'].split("/")[2];
 
-
     # Save room in session and add us to the group
     # add user to the channel if its not in the group
     message.channel_session['room'] = room

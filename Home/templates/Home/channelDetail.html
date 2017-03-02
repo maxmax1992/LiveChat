@@ -5,25 +5,28 @@
     <link rel="stylesheet" type="text/css" href="{% static 'Home/chatStyle.css' %}"/>
 {% endblock %}
 
+
 {% block body %}
+    {#    {% if user %}#}
+    {#    <h1></h1>#}
 
-    <div id="pageContent" style="text-align:left !important">
-        <div id="channelsPanel" class="panelcontent">
-
-            <h4 style="text-align: center">Channels</h4>
-            <div class="list-group table-of-contents">
-                <form class="list-group-item" role="search">
-                    {% csrf_token %}
-                    <div class="form-group" id="searchChannels">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </div>
-                </form>
-                <div class="listContent" style="overflow-scrolling: true">
-                    <a href="#" class="list-group-item btn btn-default">Default</a>
-                </div>
-            </div>
-        </div>
+    <div id="pageContent">
+        {#        <div id="channelsPanel" class="panelcontent">#}
+        {##}
+        {#            <h4 style="text-align: center">Channels</h4>#}
+        {#            <div class="list-group table-of-contents">#}
+        {#                <form class="list-group-item" role="search">#}
+        {#                    {% csrf_token %}#}
+        {#                    <div class="form-group" id="searchChannels">#}
+        {#                        <input type="text" class="form-control" placeholder="Search">#}
+        {#                        <button type="submit" class="btn btn-default">Submit</button>#}
+        {#                    </div>#}
+        {#                </form>#}
+        {#                <div class="listContent" style="overflow-scrolling: true">#}
+        {#                    <a href="#" class="list-group-item btn btn-default">Default</a>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
 
         <div class="panel panel-primary panelcontent" id="chatPanel">
             <div class="panel-heading">
@@ -31,8 +34,8 @@
             </div>
             <div class="Content" id="chatWindow">
                 {% for message in messages %}
-                    <div style="width: 100%;">
-                        {% if message.user.pk == user.pk %}
+                    <div>
+                        {% if message.user.pk == theuser.pk %}
                             <div class="panel panel-default" style="background-color: lightblue; text-align: right">
                                 </p>
                                 {{ message.text }} <span class="datetime">{{ message.getTime }}</span>
@@ -45,29 +48,22 @@
                                 </p>
                             </div>
                         {% endif %}
-
                     </div>
                 {% endfor %}
+            </div>
 
-            </div>
-            <div class="form-group">
-                <form id="chatform" method="post">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <input type="text" id="msg" maxlength="500" class="form-control">
-                        <span class="input-group-btn">
-                    <input type="hidden" id="user" value={{ user.user.username }}>
-            <button class="btn btn-default" id="go" type="button">Button</button>
-            </span>
-                    </div>
-                </form>
-            </div>
-            {#    <form id="chatform" method="post">#}
-            {#            {% csrf_token %}#}
-            {#            <input id="msg" type="text" name="msg" placeholder="text">#}
-            {#            <input type="hidden" id="user" value={{ user.username }}>#}
-            {#            <button type="submit" id="go">Say it</button>#}
-            {#        </form>#}
+        </div>
+        <div class="form-group" id="messageForm">
+            <form id="chatform" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" id="msg" maxlength="500" class="form-control">
+                    <span class="input-group-btn">
+                    <input type="hidden" id="user" value={{ theuser.user.username }}>
+            <button class="btn btn-default" id="go" type="button">Send</button>
+                        </span>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -96,13 +92,12 @@
                 var date = new Date(parseInt($(this).text()));
                 {#                console.log(formatDate(date));#}
                 $(this).text(formatDate(date));
-                $('body').fadeIn();
             });
+            {#                        $('#pageContent').height($(window).height() * 0.8);#}
+
+            $('body').fadeIn();
         });
 
-
-        {#        console.log(new Date($('#datetime span').text()));#}
-        {#        console.log($('#datetime span').text());#}
 
     </script>
     <script type="text/javascript" src='{% static "Home/jquery-1.12.1.min.js" %}'></script>
