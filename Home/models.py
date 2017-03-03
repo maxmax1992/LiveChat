@@ -20,23 +20,6 @@ class User(AbstractUser, models.Model):
         string += "Username: " + self.username + " mail: " + self.email
         return string
 
-    #
-    # def get_username(self):
-    #     return self.email
-    '''
-    Scenario 1
-     Create 2 users
-     User1 creates 1 channel 1
-     User2 joins channel 1
-     User1 posts message to chat
-     User2 posts message to chat
-
-     channel must have 2 messages from
-     User1,
-     User2
-
-     all sorted by date
-    '''
 
 class ChannelParticipant(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

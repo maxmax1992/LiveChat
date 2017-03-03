@@ -8,9 +8,6 @@ body {
     text-align: center;
 }
 
-/*#chatPanel {*/
-/*overflow: auto;*/
-/*}*/
 
 #chatPanel {
     overflow: hidden;
@@ -32,66 +29,6 @@ body {
     width: 80%;
     height: 80%;
 }
-
-/*#chatPanel {*/
-/*overflow: auto;*/
-/*}*/
-
-/*.Content {*/
-/*background: lightgrey;*/
-/*overflow: auto;*/
-
-/*}*/
-
-/*body {*/
-/*width: 100%;*/
-/*text-align: center;*/
-/*}*/
-
-/*#pageContent {*/
-/*display: inline-block;*/
-/*!*position:absolute;*!*/
-/*width: 80%;*/
-/*height: 100%;*/
-/*display: inline-flex;*/
-/*}*/
-
-/*.panelcontent {*/
-/*height: 100%;*/
-/*float: left;*/
-/*}*/
-
-/*.panelcontent#channelsPanel{*/
-/*width: 20%;*/
-/*}*/
-
-/*.panelcontent#chatPanel {*/
-/*width: 80%;*/
-/*}*/
-/*#channelsPanel {*/
-/*height: 500px;*/
-/*overflow-y: auto;*/
-/*}*/
-
-/*#searchChannels {*/
-/*width : 100%;*/
-/*display: inline-flex;*/
-/*}*/
-
-/*selects chat window*/
-/*#chatWindow {*/
-/*width: 100%;*/
-/*!*display: inline-block;*!*/
-/*!*background-color: ;*!*/
-/*!*background-color: lightgray;*!*/
-/*}*/
-#messageForm {
-
-    /*position: relative;*/
-    /*bottom: 0px*/
-}
-
-
 
 
 

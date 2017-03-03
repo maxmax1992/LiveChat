@@ -1,24 +1,6 @@
 {% extends 'Home/base.html' %}
 {% load  staticfiles %}
 
-{#<div class="login-page">#}
-{#    <div class="form">#}
-{#        <form class="register-form" method="post" >#}
-{#            <input type="text" placeholder="name"/>#}
-{#            <input type="password" placeholder="password"/>#}
-{#            <input type="text" placeholder="email address"/>#}
-{#            <button>create</button>#}
-{#            <p class="message">Already registered? <a href="#">Sign In</a></p>#}
-{#        </form>#}
-{#        <form class="login-form">#}
-{#            <input type="text" placeholder="username"/>#}
-{#            <input type="password" placeholder="password"/>#}
-{#            <button>login</button>#}
-{#            <p class="message">Not registered? <a href="#">Create an account</a></p>#}
-{#        </form>#}
-{#    </div>#}
-{#</div>  #}
-
 {% block static %}
     <link rel="stylesheet" type="text/css" href="{% static 'Home/loginStyle.css' %}"/>
 {% endblock %}
@@ -39,9 +21,6 @@
             <div class="tab-pane fade active in" id="home">
 
                 <div class="well bs-component">
-{#                    {% if error_message %}#}
-{#                        <p><strong style="color: red;">{{ error_message }}</strong></p>#}
-{#                    {% endif %}#}
                     <form class="form-horizontal" method="post" action="">
                         {% csrf_token %}
                         <fielsdset>

@@ -16,10 +16,11 @@ def channels(request):
     return render(request, 'Home/index.html', {'channels': channels})
 
 
-@login_required(login_url='/login/')
-def userDetail(request, user_id):
-    user = User.objects.get(pk=user_id)
-    return render(request, 'Home/userDetail.html', {'user': user})
+# TODO
+# @login_required(login_url='/login/')
+# def userDetail(request, user_id):
+#     user = User.objects.get(pk=user_id)
+#     return render(request, 'Home/userDetail.html', {'user': user})
 
 
 @login_required(login_url='/login/')
