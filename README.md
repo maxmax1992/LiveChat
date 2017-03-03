@@ -6,12 +6,9 @@ and Javascript for front end. The backend uses 'channels' library that brings re
 See deployed version on [heroku](djlivechat.herokuapp.com).
  
 ### Installing and running locally:
-1. 
-Create python virtualenviroment (3.5.2) 
-2. 
-activate the enviroment
-3. 
-execute this command in root folder:
+1. Create python virtualenviroment (3.5.2) 
+2. activate the enviroment
+3. execute this command in root folder:
 
 ```
 pip install -r requirements.txt
@@ -19,24 +16,29 @@ pip install -r requirements.txt
 
 Now after python libraries are installed:
 
-4. 
+4. make db
 ```
 python manage.py makemigrations
 ```
-5. 
-```python manage.py migrate
+5. migrate db
+```
+python manage.py migrate
 ```
 (Optional) If you dont have redis installed locally, install it.
 Open new terminal window and execute follwing command:
-6. 
-```python manage.py redis-server
+
+6. Execute redis server locally (It's requirement for the channels library to work)
+```
+python manage.py redis-server
 ```
  In project root:
-7. 
-```python manage.py runserver
+7. Run the server
 ```
-8. 
-Navigate in your browser to 
-    localhost:/8000
+python manage.py runserver
+```
+8. Navigate in your browser to 
+```
+localhost:/8000
+```
 
  
