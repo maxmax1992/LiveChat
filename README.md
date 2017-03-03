@@ -32,7 +32,7 @@ __Open new terminal window and execute follwing command:__
   
 [6] __Execute redis server locally (It's requirement for the channels library to work)__  
 ```
-python manage.py redis-server
+redis-server
 ```
  In project root:  
 [7] __Run the server__    
