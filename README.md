@@ -1,42 +1,47 @@
 # Live Chat
 
-### Introduction
-This livechat program is using Django framework for backend implementation 
-and Javascript for front end. The backend uses 'channels' library that brings real time to Django project.
+## Introduction
+This livechat program is using Django framework for back end implementation 
+and JQuery for the front end. The backend uses ['channels'](https://channels.readthedocs.io/en/stable/index.html) library that has several benefits:  
+__Websocket handling__,  
+__Background tasks__  
+  
 See deployed version on [heroku](djlivechat.herokuapp.com).
  
-### Installing and running locally:
-1. 
-Create python virtualenviroment (3.5.2) 
-2. 
-activate the enviroment
-3. 
-execute this command in root folder:
-
+## Installing and running locally:
+[1] __Create python virtualenviroment (3.5.2)__  
+[2] __activate the enviroment__  
+[3] __execute this command in root folder:__  
+  
 ```
 pip install -r requirements.txt
 ```
-
-Now after python libraries are installed:
-
-4. 
+  
+####Now after python libraries are installed: 
+  
+[4] __make db__  
 ```
 python manage.py makemigrations
 ```
-5. 
-```python manage.py migrate
+[5] __migrate db__  
 ```
-(Optional) If you dont have redis installed locally, install it.
-Open new terminal window and execute follwing command:
-6. 
-```python manage.py redis-server
+python manage.py migrate
 ```
- In project root:
-7. 
-```python manage.py runserver
+If you dont have redis installed locally, install it.  
+__Open new terminal window and execute follwing command:__  
+  
+[6] __Execute redis server locally (It's requirement for the channels library to work)__  
 ```
-8. 
-Navigate in your browser to 
-    localhost:/8000
+redis-server
+```
+ In project root:  
+[7] __Run the server__    
+```
+python manage.py runserver
+```
+[8] __Navigate in your browser to__   
+```
+localhost:/8000
+```
 
  
