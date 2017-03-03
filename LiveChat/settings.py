@@ -36,7 +36,7 @@ STATICFILES_DIRS = (
 SECRET_KEY = '-1do7h51c+satsrb@)6(tkpci)d!_9v3t-_9gx9fu(wzjz%wfk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["djlivechat.herokuapp.com", "127.0.0.1", "localhost"]
 
