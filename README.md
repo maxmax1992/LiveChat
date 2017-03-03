@@ -1,8 +1,11 @@
 # Live Chat
 
 ### Introduction
-This livechat program is using Django framework for backend implementation 
-and Javascript for front end. The backend uses 'channels' library that brings real time to Django project.
+This livechat program is using Django framework for back end implementation 
+and JQuery for the front end. The backend uses ['channels'](https://channels.readthedocs.io/en/stable/index.html) library that has several benefits:  
+__Websocket handling__,  
+__Background tasks__  
+  
 See deployed version on [heroku](djlivechat.herokuapp.com).
  
 ### Installing and running locally:
