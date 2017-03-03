@@ -10,17 +10,16 @@ from django.utils.timezone import get_current_timezone
 # currently returns dummy index with all users listed.
 @login_required(login_url='/login/')
 def channels(request):
-    print(request.user.is_authenticated)
 
     channels = Channel.objects.all()
     return render(request, 'Home/index.html', {'channels': channels})
 
 
 # TODO
-# @login_required(login_url='/login/')
-# def userDetail(request, user_id):
-#     user = User.objects.get(pk=user_id)
-#     return render(request, 'Home/userDetail.html', {'user': user})
+@login_required(login_url='/login/')
+def userDetail(request, user_id):
+    user = User.objects.get(pk=user_id)
+    return render(request, 'Home/userDetail.html', {'user': user})
 
 
 @login_required(login_url='/login/')
@@ -100,7 +99,10 @@ def loginView(request):
 @login_required(redirect_field_name='index')
 def logOut(request):
     logout(request)
-    return render(request, 'Home/index.html')
+    return redirect('about')
+
+def about(request):
+    return render(request, 'Home/about.html')
 
 
 @login_required(redirect_field_name='login')
@@ -121,15 +123,3 @@ def createChannel(request):
         return render(request, 'games/createChannel.html', context)
     else:
         return render(request, 'Home/createChannel.html')
-
-@login_required(login_url='/login/')
-def myChannels(request):
-    created_channels = Channel.objects.filter(creator=request.user)
-    # own_channels = Channel.objects.filter(user = request.user)
-
-    for channel in channels:
-        print(channel)
-    # print(len(created_channels) + len(created_channels)
-    return render(request, 'Home/ownChannels.html', {
-        'created_channels': created_channels
-    })
