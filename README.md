@@ -1,6 +1,6 @@
 # Live Chat
 
-### Introduction
+## Introduction
 This livechat program is using Django framework for back end implementation 
 and JQuery for the front end. The backend uses ['channels'](https://channels.readthedocs.io/en/stable/index.html) library that has several benefits:  
 __Websocket handling__,  
@@ -8,7 +8,7 @@ __Background tasks__
   
 See deployed version on [heroku](djlivechat.herokuapp.com).
  
-### Installing and running locally:
+## Installing and running locally:
 [1] __Create python virtualenviroment (3.5.2)__  
 [2] __activate the enviroment__  
 [3] __execute this command in root folder:__  
