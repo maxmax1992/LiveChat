@@ -10,17 +10,17 @@ See deployed version on [heroku](djlivechat.herokuapp.com).
 2. activate the enviroment
 3. execute this command in root folder:
 
-```pip install -r requirements.txt```
+`pip install -r requirements.txt`
 
 Now after python libraries are installed:
 
-4. ```python manage.py makemigrations```
-5. ```python manage.py migrate```
+4. `python manage.py makemigrations`
+5. `python manage.py migrate`
 (Optional) If you dont have redis installed locally, install it.
 Open new terminal window and execute follwing command:
-6. ```python manage.py redis-server```
+6. `python manage.py redis-server`
  In project root:
-7. ```python manage.py runserver```
+7. `python manage.py runserver`
 8. Navigate in your browser to 
     localhost:/8000
 
