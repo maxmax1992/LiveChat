@@ -6,7 +6,7 @@ and JQuery for the front end. The backend uses ['channels'](https://channels.rea
 __Websocket handling__,  
 __Background tasks__  
   
-See deployed version on [heroku](djlivechat.herokuapp.com).
+See deployed version on [heroku](https://djlivechat.herokuapp.com).
  
 ## Installing and running locally:
 [1] __Create python virtualenviroment (3.5.2)__  
